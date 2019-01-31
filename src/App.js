@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <img src={ this.randomImageSrc() } alt="background image" />
+        <div className="App__background" style={ this.inlineStyleBg(this.randomImageSrc()) } />
       </div>
     );
   }
@@ -42,6 +42,12 @@ class App extends Component {
     const randomImgPath = images[Math.floor(Math.random() * images.length)];
 
     return `${this.state.apiBase}${randomImgPath}`;
+  }
+
+  inlineStyleBg(imgSrc) {
+    return {
+      backgroundImage: `url(${imgSrc})`,
+    };
   }
 }
 
