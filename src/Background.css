@@ -3,15 +3,24 @@
   min-height: 100vh;
   width: 100%;
   color: white;
-  display: flex;
   overflow: hidden;
+  position: relative;
 }
 
 .Background__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
   width: 100%;
   background-size: cover;
   background-position: center center;
   animation: fadein 1s;
+}
+
+.Background__container {
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes fadein {

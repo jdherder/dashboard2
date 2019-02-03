@@ -27,6 +27,7 @@ class Background extends Component {
     return (
       <div className="Background">
         { this.state.src ? this.buildImgBgElement() : '' }
+        { this.props.children ? <div className="Background__container"> { this.props.children } </div> : '' }
       </div>
     );
   }
