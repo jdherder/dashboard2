@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as axios from 'axios';
 import './App.css';
+import Background from './Background';
 
 class App extends Component {
 
@@ -9,7 +10,7 @@ class App extends Component {
 
     this.state = {
       apiBase: 'https://dashboard-api.jh.fyi',
-      images: [],
+      randomImgSrc: '',
     };
   }
 
@@ -17,7 +18,7 @@ class App extends Component {
     axios.get(this.state.apiBase)
       .then((response) => {
         const data = response.data;
-        this.setState({ images: data.images });
+        this.setState({ randomImgSrc: this.getRandomImageSrc(data.images) });
       })
       .catch((error) => {
         console.log(error);
@@ -27,27 +28,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App__background" style={ this.inlineStyleBg(this.randomImageSrc()) } />
+        <Background src={ this.state.randomImgSrc }></Background>
       </div>
     );
   }
 
-  randomImageSrc() {
-    var images = this.state.images;
-
-    if (!images.length) {
+  getRandomImageSrc(images) {
+    if (!images || !images.length) {
       return false;
     }
 
     const randomImgPath = images[Math.floor(Math.random() * images.length)];
 
     return `${this.state.apiBase}${randomImgPath}`;
-  }
-
-  inlineStyleBg(imgSrc) {
-    return {
-      backgroundImage: `url(${imgSrc})`,
-    };
   }
 }
 

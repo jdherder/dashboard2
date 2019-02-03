@@ -1,12 +1,3 @@
 .App {
   background-color: #282c34;
-  min-height: 100vh;
-  color: white;
-  display: flex;
-}
-
-.App__background {
-  width: 100%;
-  background-size: cover;
-  background-position: center center;
 }
