@@ -1,0 +1,23 @@
+.Clock {
+  position: relative;
+  font-size: 4rem;
+  text-shadow: 2px 0px 17px rgba(0,0,0,0.72);
+}
+
+.Clock-h {
+  display: inline-block;
+}
+
+.Clock-sep {
+  display: inline-block;
+  font-size: 3rem;
+}
+
+.Clock-m {
+  display: inline-block;
+}
+
+.Clock-p {
+  display: inline-block;
+  font-size: 2rem;
+}

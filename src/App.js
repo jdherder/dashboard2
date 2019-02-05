@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as axios from 'axios';
 import './App.css';
 import Background from './Background';
+import Clock from './Clock';
 
 class App extends Component {
 
@@ -28,7 +29,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Background src={ this.state.randomImgSrc }></Background>
+        <Background src={ this.state.randomImgSrc }>
+          <Clock></Clock>
+        </Background>
       </div>
     );
   }
