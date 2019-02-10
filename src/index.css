@@ -28,3 +28,12 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+@keyframes slideIn {
+  from {
+    transform: translateX(110vw) scale(1.15);
+  }
+  to {
+    transform: translateX(0) scale(1);
+  }
+}

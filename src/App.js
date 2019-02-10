@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as axios from 'axios';
 import './App.css';
-import Background from './Background';
+import DynamicBackground from './DynamicBackground';
 import Clock from './Clock';
 
 class App extends Component {
@@ -11,7 +11,7 @@ class App extends Component {
 
     this.state = {
       apiBase: 'https://dashboard-api.jh.fyi',
-      randomImgSrc: '',
+      images: [],
     };
   }
 
@@ -19,7 +19,11 @@ class App extends Component {
     axios.get(this.state.apiBase)
       .then((response) => {
         const data = response.data;
-        this.setState({ randomImgSrc: this.getRandomImageSrc(data.images) });
+        const images = [ ...data.images ];
+
+        this.setState({
+          images: this.normalizeImageData(images)
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -29,21 +33,19 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Background src={ this.state.randomImgSrc }>
+        <DynamicBackground images={ this.state.images } slideTime={ 30 * 1000 }>
           <Clock></Clock>
-        </Background>
+        </DynamicBackground>
       </div>
     );
   }
 
-  getRandomImageSrc(images) {
-    if (!images || !images.length) {
-      return false;
+  normalizeImageData(rawImageUris) {
+    if (!rawImageUris || !rawImageUris.length) {
+      return [];
     }
 
-    const randomImgPath = images[Math.floor(Math.random() * images.length)];
-
-    return `${this.state.apiBase}${randomImgPath}`;
+    return rawImageUris.map(uri => `${this.state.apiBase}${uri}`);
   }
 }
 
