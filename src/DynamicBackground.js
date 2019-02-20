@@ -63,13 +63,13 @@ class DynamicBackground extends Component {
   }
 
   nextSlide() {
-    const nextIndex = this.state.slideIndex < this.state.slideImagesArr.length - 1 ? this.state.slideIndex += 1 : 0;
+    const nextIndex = this.state.slideIndex < this.state.slideImagesArr.length - 1 ? this.state.slideIndex + 1 : 0;
       
     this.preLoadImg(this.state.slideImagesArr[nextIndex], () => {
       const srcProp = this.state.activeStage === 1 ? 'stageBgImageSrc2' : 'stageBgImageSrc1';
       this.setState({
         [srcProp]: this.state.slideImagesArr[nextIndex],
-        index: nextIndex,
+        slideIndex: nextIndex,
         activeStage: this.state.activeStage === 1 ? 2 : 1,
       });
 
