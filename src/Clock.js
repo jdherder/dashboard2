@@ -42,7 +42,6 @@ class Clock extends Component {
   render() {
     const h = this.fmtH(this.state.time.getHours());
     const m = this.fmtM(this.state.time.getMinutes());
-    const s = this.fmtS(this.state.time.getSeconds());
     const p = this.state.time.getHours() < 12 ? 'am' : 'pm';
     
     return (
