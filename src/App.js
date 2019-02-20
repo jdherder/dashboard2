@@ -33,7 +33,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <DynamicBackground images={ this.state.images } slideTime={ 30 * 1000 }>
+        <DynamicBackground images={ this.state.images } slideTime={ 10 * 1000 }>
           <Clock></Clock>
         </DynamicBackground>
       </div>
